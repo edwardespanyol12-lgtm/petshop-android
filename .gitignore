@@ -13,3 +13,7 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Backend-specific ignores
+petshop-backend/node_modules/
+petshop-backend/.env

@@ -1,3 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Petshop</string>
+    <string name="app_name">PetShop</string>
+
+    <!-- Login -->
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="sign_in_to_continue">Sign in to continue</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="no_account">Don\'t have an account? </string>
+    <string name="register_link">Register</string>
+
+    <!-- Register -->
+    <string name="create_account">Create Account</string>
+    <string name="full_name">Full Name</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="already_have_account">Already have an account? </string>
+    <string name="login_link">Login</string>
+
+    <!-- Dashboard -->
+    <string name="everything_pet_needs">Everything Your\nPet Needs 🐾</string>
+    <string name="shop_now">Shop Now</string>
+    <string name="free_shipping">Free Shipping</string>
+    <string name="secure_payment">Secure Payment</string>
+    <string name="quality_products">Quality Products</string>
+    <string name="pet_approved">Pet Approved</string>
+    <string name="shop_by_category">Shop by Category</string>
+
+    <!-- Profile -->
+    <string name="my_profile">My Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_password">Change Password</string>
+    <string name="logout">Logout</string>
+    <string name="phone">Phone Number</string>
+
+    <!-- Update Profile -->
+    <string name="update_profile">Update Profile</string>
+    <string name="save_changes">Save Changes</string>
+
+    <!-- Change Password -->
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="change_password_btn">Change Password</string>
+
+    <!-- Errors -->
+    <string name="no_internet">No internet connection. Please check your network.</string>
+    <string name="server_error">Server error. Please try again later.</string>
+    <string name="invalid_credentials">Invalid email or password.</string>
+    <string name="network_error">Network error. Please try again.</string>
+    <string name="field_required">This field is required.</string>
 </resources>
