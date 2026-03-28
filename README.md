@@ -1,4 +1,4 @@
-# PetShop App
+<img width="1080" height="2220" alt="Screenshot_20260328_100446" src="https://github.com/user-attachments/assets/fe8bf9fb-15aa-4cc2-8780-410f1c5d897b" /># PetShop App
 
 An Android app for a pet shop that lets users register, login, view their profile, and more.
 
@@ -219,30 +219,25 @@ Keep this terminal open while testing.
 
 ---
 
-## Screenshots
+Register Screenshot
 
-> To add screenshots:
-> 1. Run the app on the emulator
-> 2. Take a screenshot using the emulator's camera button (or press `Ctrl + S` in the emulator)
-> 3. Save each screenshot inside a folder called `screenshots/` in this project
-> 4. Replace the image links below with the actual file names
+<img width="1080" height="2220" alt="Screenshot_20260328_100110" src="https://github.com/user-attachments/assets/66b87a76-23eb-4b9d-9f83-f836cfd4a91e" />
 
-Create a folder called `screenshots` next to this README file, then save your images there.
+Login Screenshot
 
-### Login
-![Login Screen](screenshots/login.png)
+<img width="1080" height="2220" alt="Screenshot_20260328_100151" src="https://github.com/user-attachments/assets/b4cfe86b-9d55-48ad-980c-e237bbdd9c7e" />
 
-### Register
-![Register Screen](screenshots/register.png)
+Dashboard screenshot
+<img width="1080" height="2220" alt="Screenshot_20260328_100446" src="https://github.com/user-attachments/assets/e66aafce-bf06-4311-937b-d02de5d17ec9" />
 
-### Dashboard
-![Dashboard Screen](screenshots/dashboard.png)
 
-### Profile
-![Profile Screen](screenshots/profile.png)
+Profile Screenshot
+<img width="1080" height="2220" alt="Screenshot_20260328_100454" src="https://github.com/user-attachments/assets/20768d7a-8209-4ba0-943a-d7733a8f22cb" />
 
-### Update Profile
-![Update Profile Screen](screenshots/update_profile.png)
+Change Password Screenshot
+<img width="1080" height="2220" alt="Screenshot_20260328_100509" src="https://github.com/user-attachments/assets/165ada2c-b7d2-4717-ad9e-0b523ee4c663" />
 
-### Change Password
-![Change Password Screen](screenshots/change_password.png)
+
+
+
+
