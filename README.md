@@ -1,5 +1,3 @@
-<img width="1080" height="2220" alt="Screenshot_20260328_100446" src="https://github.com/user-attachments/assets/fe8bf9fb-15aa-4cc2-8780-410f1c5d897b" /># PetShop App
-
 An Android app for a pet shop that lets users register, login, view their profile, and more.
 
 ---
