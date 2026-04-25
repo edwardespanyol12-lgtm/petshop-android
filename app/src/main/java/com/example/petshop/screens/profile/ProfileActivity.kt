@@ -1,4 +1,4 @@
-package com.example.petshop
+package com.example.petshop.screens.profile
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.petshop.databinding.ActivityProfileBinding
 import com.example.petshop.model.ProfileResponse
 import com.example.petshop.network.RetrofitClient
+import com.example.petshop.screens.login.LoginActivity
 import com.example.petshop.utils.NetworkUtils
 import com.example.petshop.utils.SessionManager
 import retrofit2.Call

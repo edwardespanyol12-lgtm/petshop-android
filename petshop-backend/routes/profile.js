@@ -7,8 +7,8 @@ const { supabaseAdmin } = require('../supabaseClient')
 router.get('/profile', authMiddleware, async (req, res) => {
     try {
         const { data, error } = await supabaseAdmin
-            .from('profiles')
-            .select('*')
+            .from('users')
+            .select('id, email, full_name, role, profile_picture_url')
             .eq('id', req.user.id)
             .single()
 
@@ -16,9 +16,18 @@ router.get('/profile', authMiddleware, async (req, res) => {
             return res.status(404).json({ message: 'Profile not found' })
         }
 
+        // Map database columns to app expected format
+        const profile = {
+            id: data.id,
+            email: data.email,
+            name: data.full_name,
+            role: data.role,
+            profile_picture_url: data.profile_picture_url
+        }
+
         return res.status(200).json({
             message: 'Profile retrieved successfully',
-            profile: data
+            profile: profile
         })
     } catch (err) {
         console.error('Get profile error:', err.message)
@@ -28,7 +37,7 @@ router.get('/profile', authMiddleware, async (req, res) => {
 
 // PUT /api/profile
 router.put('/profile', authMiddleware, async (req, res) => {
-    const { name, phone } = req.body
+    const { name, phone } = req.body // phone column doesn't exist in users table currently, we can skip or add it
 
     if (!name) {
         return res.status(400).json({ message: 'Name is required' })
@@ -36,8 +45,8 @@ router.put('/profile', authMiddleware, async (req, res) => {
 
     try {
         const { data, error } = await supabaseAdmin
-            .from('profiles')
-            .update({ name, phone: phone || null })
+            .from('users')
+            .update({ full_name: name })
             .eq('id', req.user.id)
             .select()
             .single()
@@ -48,7 +57,11 @@ router.put('/profile', authMiddleware, async (req, res) => {
 
         return res.status(200).json({
             message: 'Profile updated successfully',
-            profile: data
+            profile: {
+                id: data.id,
+                email: data.email,
+                name: data.full_name
+            }
         })
     } catch (err) {
         console.error('Update profile error:', err.message)

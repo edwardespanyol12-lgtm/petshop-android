@@ -1,4 +1,5 @@
-const { supabaseAdmin } = require('../supabaseClient')
+const jwt = require('jsonwebtoken')
+const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret'
 
 const authMiddleware = async (req, res, next) => {
     const authHeader = req.headers['authorization']
@@ -10,17 +11,19 @@ const authMiddleware = async (req, res, next) => {
     const token = authHeader.split(' ')[1]
 
     try {
-        const { data: { user }, error } = await supabaseAdmin.auth.getUser(token)
-
-        if (error || !user) {
+        // Verify custom JWT token
+        const decoded = jwt.verify(token, JWT_SECRET)
+        
+        if (!decoded) {
             return res.status(401).json({ message: 'Unauthorized: Invalid or expired token' })
         }
 
-        req.user = user
+        // Attach user info to request
+        req.user = decoded
         next()
     } catch (err) {
         console.error('Auth middleware error:', err.message)
-        return res.status(500).json({ message: 'Server error during authentication' })
+        return res.status(401).json({ message: 'Unauthorized: Session expired or invalid' })
     }
 }
 

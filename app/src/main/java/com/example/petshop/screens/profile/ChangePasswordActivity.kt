@@ -1,4 +1,4 @@
-package com.example.petshop
+package com.example.petshop.screens.profile
 
 import android.os.Bundle
 import android.view.View

@@ -6,16 +6,16 @@ const { supabaseAdmin } = require('../supabaseClient')
 // GET /api/dashboard
 router.get('/dashboard', authMiddleware, async (req, res) => {
     try {
-        const { data: profile } = await supabaseAdmin
-            .from('profiles')
-            .select('name')
+        const { data: user } = await supabaseAdmin
+            .from('users')
+            .select('full_name')
             .eq('id', req.user.id)
             .single()
 
         return res.status(200).json({
             message: 'Dashboard data retrieved',
             data: {
-                welcome_message: `Welcome back, ${profile?.name || 'Pet Lover'}!`,
+                welcomeMessage: `Welcome back, ${user?.full_name || 'Pet Lover'}! 🐾`,
                 user_id: req.user.id,
                 categories: [
                     { id: 1, name: 'Animals', icon: 'ic_animals' },
