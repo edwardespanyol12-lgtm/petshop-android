@@ -1,7 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const authMiddleware = require('../middleware/authMiddleware')
-const { supabase, supabaseAdmin } = require('../supabaseClient')
+const { supabaseAdmin } = require('../supabaseClient')
+const bcrypt = require('bcrypt')
 
 // POST /api/change-password
 router.post('/change-password', authMiddleware, async (req, res) => {
@@ -11,30 +12,39 @@ router.post('/change-password', authMiddleware, async (req, res) => {
         return res.status(400).json({ message: 'Current and new password are required' })
     }
 
-    if (new_password.length < 6) {
-        return res.status(400).json({ message: 'New password must be at least 6 characters' })
-    }
-
-    if (current_password === new_password) {
-        return res.status(400).json({ message: 'New password must be different from current password' })
-    }
-
     try {
-        // Verify current password by attempting sign-in
-        const { error: signInError } = await supabase.auth.signInWithPassword({
-            email: req.user.email,
-            password: current_password
-        })
+        // Fetch current user from DB
+        const { data: user, error } = await supabaseAdmin
+            .from('users')
+            .select('password')
+            .eq('id', req.user.id)
+            .single()
 
-        if (signInError) {
+        if (error || !user) {
+            return res.status(401).json({ message: 'Unauthorized' })
+        }
+
+        // Verify current password
+        let isMatch = false
+        if (user.password.startsWith('$2a$') || user.password.startsWith('$2b$')) {
+            isMatch = await bcrypt.compare(current_password, user.password)
+        } else {
+            // Legacy plain text check
+            isMatch = (current_password === user.password)
+        }
+
+        if (!isMatch) {
             return res.status(401).json({ message: 'Current password is incorrect' })
         }
 
-        // Update password using admin client
-        const { error: updateError } = await supabaseAdmin.auth.admin.updateUserById(
-            req.user.id,
-            { password: new_password }
-        )
+        // Hash new password
+        const hashedPassword = await bcrypt.hash(new_password, 10)
+
+        // Update in DB
+        const { error: updateError } = await supabaseAdmin
+            .from('users')
+            .update({ password: hashedPassword })
+            .eq('id', req.user.id)
 
         if (updateError) {
             return res.status(400).json({ message: updateError.message })

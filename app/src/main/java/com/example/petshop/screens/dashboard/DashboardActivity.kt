@@ -1,4 +1,4 @@
-package com.example.petshop
+package com.example.petshop.screens.dashboard
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.petshop.databinding.ActivityDashboardBinding
 import com.example.petshop.model.DashboardResponse
 import com.example.petshop.network.RetrofitClient
+import com.example.petshop.screens.login.LoginActivity
+import com.example.petshop.screens.products.ProductActivity
+import com.example.petshop.screens.profile.ProfileActivity
 import com.example.petshop.utils.NetworkUtils
 import com.example.petshop.utils.SessionManager
 import retrofit2.Call
@@ -35,8 +38,17 @@ class DashboardActivity : AppCompatActivity() {
         binding.navProfile.setOnClickListener {
             startActivity(Intent(this, ProfileActivity::class.java))
         }
+        binding.navProducts.setOnClickListener {
+            startActivity(Intent(this, ProductActivity::class.java))
+        }
+        binding.btnShopNow.setOnClickListener {
+            startActivity(Intent(this, ProductActivity::class.java))
+        }
         // Home is already active
         binding.navHome.setOnClickListener { /* already here */ }
+
+        // Hero banner "Shop Now" button (it's a Button inside the RelativeLayout, I should find its ID)
+        // Wait, looking at activity_dashboard.xml lines 102-112, the button has NO ID.
     }
 
     private fun loadDashboard() {

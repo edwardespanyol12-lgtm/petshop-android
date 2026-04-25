@@ -1,4 +1,4 @@
-package com.example.petshop
+package com.example.petshop.screens.profile
 
 import android.os.Bundle
 import android.view.View
@@ -33,12 +33,12 @@ class UpdateProfileActivity : AppCompatActivity() {
         binding.etName.setText(sessionManager.getUserName())
 
         // Load fresh from API
-        loadCurrentProfile()
+        currentProfile()
 
         binding.btnSave.setOnClickListener { attemptUpdate() }
     }
 
-    private fun loadCurrentProfile() {
+    private fun currentProfile() {
         if (!NetworkUtils.isConnected(this)) return
 
         RetrofitClient.instance.getProfile().enqueue(object : Callback<ProfileResponse> {

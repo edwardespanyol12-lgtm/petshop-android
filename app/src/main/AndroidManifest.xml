@@ -15,7 +15,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
-        <!-- Splash / Router -->
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -27,33 +27,39 @@
         </activity>
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".screens.login.LoginActivity"
             android:exported="false"
             android:theme="@style/Theme.Petshop" />
 
         <activity
-            android:name=".RegisterActivity"
+            android:name=".screens.register.RegisterActivity"
             android:exported="false"
             android:theme="@style/Theme.Petshop" />
 
         <activity
-            android:name=".DashboardActivity"
+            android:name=".screens.dashboard.DashboardActivity"
             android:exported="false"
             android:theme="@style/Theme.Petshop" />
 
         <activity
-            android:name=".ProfileActivity"
+            android:name=".screens.profile.ProfileActivity"
             android:exported="false"
             android:theme="@style/Theme.Petshop" />
 
         <activity
-            android:name=".UpdateProfileActivity"
+            android:name=".screens.profile.UpdateProfileActivity"
             android:exported="false"
             android:theme="@style/Theme.Petshop" />
 
         <activity
-            android:name=".ChangePasswordActivity"
+            android:name=".screens.profile.ChangePasswordActivity"
             android:exported="false"
+            android:theme="@style/Theme.Petshop" />
+
+        <activity
+            android:name=".screens.products.ProductActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"
             android:theme="@style/Theme.Petshop" />
 
     </application>
